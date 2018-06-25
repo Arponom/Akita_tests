@@ -10,12 +10,12 @@ import ru.alfabank.alfatest.cucumber.api.AkitaPage;
 @Name("Страница поиска гугл")
 public class SearchPage extends AkitaPage {
 
-    @FindBy(xpath = ".//*[(@title='Поиск')]")
+    @FindBy(xpath = ".//*[(@id='lst-ib')]")
     @Name("Поиск")
     public SelenideElement searchField;
 
     @Optional
-    @FindBy(xpath = ".//*[(@value='Поиск в Google')]" )
+    @FindBy(xpath = ".//*[(@class='lsbb')]" )
     @Name("Найти")
     public SelenideElement searchButton;
 
