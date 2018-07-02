@@ -13,9 +13,7 @@ import static com.codeborne.selenide.Selenide.$$;
 @Name("Просмотр температуры за месяц")
 public class resultTownPage extends AkitaPage {
 
-    @FindBy(xpath = ".//*[(@class='title title_level_1')]")
-    @Name("Активный город")
-    private SelenideElement resultPage;
+
 
     @FindBy(xpath = ".//*[(@class=\"title title_level_1\")]")
     @Name("Выбранный город")
@@ -24,4 +22,8 @@ public class resultTownPage extends AkitaPage {
     @FindBy(xpath = ".//*[(@class=\"graph-longterm__label-title\")]")
     @Name("температурные показатели")
     private List<SelenideElement> spisokTemperatury1;
+
+    @FindBy(xpath = ".//*[(@class='title title_level_1')]")
+    @Name("Активный город")
+    private SelenideElement resultPage;
 }

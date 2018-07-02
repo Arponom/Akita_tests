@@ -4,14 +4,14 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import cucumber.api.java.ru.И;
 import cucumber.api.java.ru.Тогда;
-//import entities.Repositories;
-//import helpers.GitHubSearchPageHelper;
 import lombok.extern.slf4j.Slf4j;
-import org.omg.CORBA.INTERNAL;
+
 import org.openqa.selenium.By;
 import ru.alfabank.alfatest.cucumber.api.AkitaScenario;
 
+import java.sql.Time;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.format;
@@ -27,25 +27,33 @@ public class findMinTemperatureInArray {
 
     @Тогда("^вывести минимальное значение из списка \"([^\"]*)\"$")
     public void selectRandomElementFromList(String listName) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(500L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<SelenideElement> listOfElementsFromPage = akitaScenario.getCurrentPage().getElementsList(listName);
-        //listOfElementsFromPage.get(getRandom(listOfElementsFromPage.size())).shouldBe(Condition.visible).click();
         List<String> elementsListText = listOfElementsFromPage.stream()
                 .map(element -> element.getText().trim().toLowerCase().substring(1))
                 .collect(toList());
-
-        List<Integer> listInt = new ArrayList<Integer>(elementsListText.size());
-        for (String current:elementsListText) {
-            listInt.add(Integer.parseInt(current));
+        List<Integer> listInt= new ArrayList<>();
+        for(SelenideElement selenideElement: listOfElementsFromPage){
+            listInt.add(Integer.parseInt(selenideElement.getText().substring(1)));
         }
         Integer minValue = Collections.min(listInt);
+        akitaScenario.write("Выведена минимальная температура выбранного месяца: + " + minValue);
+
+        //listOfElementsFromPage.get(getRandom(listOfElementsFromPage.size())).shouldBe(Condition.visible).click();
+//        List<Integer> listInt = new ArrayList<Integer>(elementsListText.size());
+//        for (String current:elementsListText) {
+//            listInt.add(Integer.parseInt(current));
+//        }
         /*Integer elementForCompare = Integer.MAX_VALUE;
         for (SelenideElement selenideElement: listOfElementsFromPage){
             if (Integer.parseInt(selenideElement.getSearchCriteria().substring(1))<elementForCompare){
                 elementForCompare=Integer.parseInt(selenideElement.getSearchCriteria().substring(1));
             }
         }*/
-        akitaScenario.write("Выведено минимальное значение из списка: " + minValue);
-
     }
 
     @И("^выполнено нажатие на что то с текстом \"(.*)\"$")
