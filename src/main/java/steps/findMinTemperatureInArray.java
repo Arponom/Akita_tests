@@ -33,15 +33,21 @@ public class findMinTemperatureInArray {
             e.printStackTrace();
         }
         List<SelenideElement> listOfElementsFromPage = akitaScenario.getCurrentPage().getElementsList(listName);
-        List<String> elementsListText = listOfElementsFromPage.stream()
-                .map(element -> element.getText().trim().toLowerCase().substring(1))
-                .collect(toList());
+//        List<String> elementsListText = listOfElementsFromPage.stream()
+//                .map(element -> element.getText().trim().toLowerCase().substring(1))
+//                .collect(toList());
+
+
         List<Integer> listInt= new ArrayList<>();
         for(SelenideElement selenideElement: listOfElementsFromPage){
             listInt.add(Integer.parseInt(selenideElement.getText().substring(1)));
         }
         Integer minValue = Collections.min(listInt);
-        akitaScenario.write("Выведена минимальная температура выбранного месяца: + " + minValue);
+
+            int Herniua = listInt.indexOf(minValue);
+        //akitaScenario.write("Выведена минимальная температура выбранного месяца: + " + minValue);
+        akitaScenario.write("Выведена минимальная температура выбранного месяца: число месяца - " + (Herniua+1) + "| +" + minValue);
+
 
         //listOfElementsFromPage.get(getRandom(listOfElementsFromPage.size())).shouldBe(Condition.visible).click();
 //        List<Integer> listInt = new ArrayList<Integer>(elementsListText.size());
