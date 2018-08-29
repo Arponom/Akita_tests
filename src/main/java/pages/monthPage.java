@@ -14,4 +14,8 @@ public class monthPage extends AkitaPage {
     @Name("температурные показатели")
     private List<SelenideElement> spisokTemperatury ;
 
+    @FindBy(xpath = ".//*[(@class=\"link forecast-briefly__header-button\")][2]")
+    @Name("Кнопка прогноз на месяц")
+    public SelenideElement searchYandexButton;
+
 }

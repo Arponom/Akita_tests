@@ -26,4 +26,9 @@ public class resultTownPage extends AkitaPage {
     @FindBy(xpath = ".//*[(@class='title title_level_1')]")
     @Name("Активный город")
     private SelenideElement resultPage;
+
+    @FindBy(xpath = "//div[@class='temp climate-calendar-day__temp-day']/span[@class='temp__value']")
+    @Name("Температура днем")
+    private List<SelenideElement> listTemprature;
+
 }
