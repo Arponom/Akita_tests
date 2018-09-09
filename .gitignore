@@ -2,3 +2,4 @@ out
 .idea/
 build/
 .gradle/
+src/main/java/helpers/GitHubSearchPageHelper.java

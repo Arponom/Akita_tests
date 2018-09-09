@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package steps;
+/*package steps;
 
 import cucumber.api.java.ru.Тогда;
 import entities.Repositories;
@@ -41,3 +41,4 @@ public class TemplateSteps {
         assertThat(format("список со страницы [%s] не соответствует списку из ответа сервиса [%s]", repoNamesFromPage, repoNamesFromResponse), repoNamesFromPage.toArray(), arrayContainingInAnyOrder(repoNamesFromResponse.toArray()));
     }
 }
+*/
